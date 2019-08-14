@@ -30,7 +30,6 @@ public class ProfileServiceimpl implements ProfileService{
 			
 			profileResponseDto.setAddress(user.getAddress());
 			profileResponseDto.setAge(user.getAge());
-			profileResponseDto.setEducation(user.getEducation());
 			profileResponseDto.setFirstName(user.getFirstName());
 			profileResponseDto.setLastName(user.getLastName());
 			profileResponseDto.setMaritalStatus(user.getMaritalStatus());

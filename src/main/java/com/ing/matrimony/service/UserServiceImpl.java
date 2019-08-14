@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 
 				user = new User();
 				String birthDay = userDto.getDateOfBirth();
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 				LocalDate dob = LocalDate.parse(birthDay, formatter);
 
 				

@@ -34,7 +34,7 @@ public class GlobalExceptionHandler {
 
 	}
 	@ExceptionHandler(value = { UserNotFoundException.class })
-	public ResponseEntity<ResponseError> ageException(Exception e) {
+	public ResponseEntity<ResponseError> UserNotFoundException(Exception e) {
 		ResponseError error = new ResponseError(e.getMessage(), HttpStatus.BAD_REQUEST.value());
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 
