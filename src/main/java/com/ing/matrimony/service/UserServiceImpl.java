@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,11 +20,16 @@ import com.ing.matrimony.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService {
 
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
+	
 	@Autowired
 	UserRepository userRepository;
 
 	@Override
 	public UserResponseDto register(UserDto userDto) {
+		
+		LOGGER.info("In UserServiceImpl");
 		User user;
 		UserResponseDto userResponseDto;
 
