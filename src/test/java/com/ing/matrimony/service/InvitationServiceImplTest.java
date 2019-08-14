@@ -34,7 +34,7 @@ public class InvitationServiceImplTest {
 		Invitation invitation=new Invitation();
 
 		invitation.setReceiverId(1L);
-		invitation.setSenderID(2L);
+		invitation.setSenderId(2L);
 		invitation.setInvitationStatus("PENDING");
 		InvitationRequestDto InvitationRequestDto=new InvitationRequestDto();
 		InvitationRequestDto.setRecieverId(1L);
