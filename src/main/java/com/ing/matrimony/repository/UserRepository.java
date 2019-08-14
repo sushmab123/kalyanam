@@ -8,4 +8,9 @@ import com.ing.matrimony.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
+	public User findByUserId(Long userId);
+
+	public User findByMobileNoAndPassword(String mobileNo, String password);
+	
+
 }
