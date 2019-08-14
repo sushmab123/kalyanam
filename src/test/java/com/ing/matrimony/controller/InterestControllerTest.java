@@ -1,5 +1,7 @@
 package com.ing.matrimony.controller;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -54,6 +57,11 @@ public class InterestControllerTest {
 		mockMvc.perform(MockMvcRequestBuilders.post("/raiseInterest").contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.ALL).content(asJsonString(invitationRequest))).andReturn();
 
+		ResponseEntity<InvitationDto> actual=interestController.invitation(invitationRequest);
+		
+		assertEquals("invitation sent", actual.getBody().getMessage());
+		
+		
 	
 	}
 public static String asJsonString(final Object obj) {
