@@ -15,26 +15,26 @@ public class GlobalExceptionHandler {
 	}
 
 	@ExceptionHandler(value = { ValidAgeValidator.class })
-	public ResponseEntity<ResponseError> ValidageException(Exception e) {
+	public ResponseEntity<ResponseError> validAgeException(Exception e) {
 		ResponseError error = new ResponseError(e.getMessage(), HttpStatus.BAD_REQUEST.value());
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 
 	}
 
 	@ExceptionHandler(EmailException.class)
-	private ResponseEntity<ResponseError> EmailException(Exception ex) {
+	private ResponseEntity<ResponseError> emailException(Exception ex) {
 		ResponseError errorResponse = new ResponseError(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value());
 		return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@ExceptionHandler(MobileNumberExistException.class)
-	private ResponseEntity<ResponseError> MobileNumberExistException(Exception ex) {
+	private ResponseEntity<ResponseError> mobileNumberExistException(Exception ex) {
 		ResponseError errorResponse = new ResponseError(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value());
 		return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 
 	}
 	@ExceptionHandler(value = { UserNotFoundException.class })
-	public ResponseEntity<ResponseError> UserNotFoundException(Exception e) {
+	public ResponseEntity<ResponseError> userNotFoundException(Exception e) {
 		ResponseError error = new ResponseError(e.getMessage(), HttpStatus.BAD_REQUEST.value());
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 
