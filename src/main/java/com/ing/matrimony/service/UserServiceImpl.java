@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
 				LocalDate dob = LocalDate.parse(birthDay, formatter);
 
-				BeanUtils.copyProperties(userDto, user);
+				
 				user.setDateOfBirth(dob);
 				List<User> listUser = userRepository.findAll();
 
@@ -49,6 +49,7 @@ public class UserServiceImpl implements UserService {
 				}
 
 				if (count == 0) {
+					BeanUtils.copyProperties(userDto, user);
 					User responseUser = userRepository.save(user);
 					userResponseDto = new UserResponseDto();
 					userResponseDto.setUserId(responseUser.getUserId());
