@@ -21,7 +21,7 @@ public class Invitation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long invitationId;
-	private Long senderID;
+	private Long senderId;
 	private Long receiverId;
 	private String invitationStatus;
 
