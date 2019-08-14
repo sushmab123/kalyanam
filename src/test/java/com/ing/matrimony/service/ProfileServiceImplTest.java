@@ -19,7 +19,7 @@ import com.ing.matrimony.repository.UserRepository;
 public class ProfileServiceImplTest {
 
 	@InjectMocks
-	ProfileServiceImpl profileServiceImpl;
+	ProfileServiceimpl profileServiceImpl;
 
 	@Mock
 	UserRepository userRepository;
