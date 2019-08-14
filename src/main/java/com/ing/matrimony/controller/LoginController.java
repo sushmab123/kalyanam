@@ -16,7 +16,7 @@ import com.ing.matrimony.dto.LoginResponseDto;
 import com.ing.matrimony.service.LoginService;
 
 @RestController
-@CrossOrigin(allowedHeaders = {"*","/"},origins ={"*","/"})
+@CrossOrigin(origins ="**")
 @RequestMapping("/api")
 public class LoginController {
 	
