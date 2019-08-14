@@ -18,7 +18,7 @@ public class UserDto {
 	private String confirmPassword;
 	private String dateOfBirth;
 	private String address;
-	private String education;
+
 	private String maritalStatus;
 	private String gender;
 	private String motherTongue;

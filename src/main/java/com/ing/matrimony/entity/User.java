@@ -29,7 +29,7 @@ public class User {
 	private String password;
 	private LocalDate dateOfBirth;
 	private String address;
-	private String education;
+
 	private String maritalStatus;
 	private String gender;
 	private String motherTongue;
