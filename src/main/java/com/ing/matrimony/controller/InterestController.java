@@ -1,5 +1,7 @@
 package com.ing.matrimony.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,8 @@ import com.ing.matrimony.service.InvitationService;
 @RequestMapping("/api")
 public class InterestController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(InterestController.class);
+	
 	@Autowired
 	private InvitationService invitationService;
 	
@@ -25,7 +29,7 @@ public class InterestController {
 	@PostMapping("/raiseInterest")
 	public ResponseEntity<InvitationDto> invitation(@RequestBody InvitationRequestDto invitationRequest)
 	{
-		
+		LOGGER.info("In Interest Controller");
 		
 		return new ResponseEntity<>(invitationService.invite(invitationRequest),HttpStatus.OK);
 	}
