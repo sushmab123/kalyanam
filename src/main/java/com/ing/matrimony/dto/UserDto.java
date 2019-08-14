@@ -1,7 +1,5 @@
 package com.ing.matrimony.dto;
 
-import java.util.Date;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class UserDto {
-	private Long userId;
+
 	private String firstName;
 	private String lastName;
 	private String mobileNo;
@@ -18,7 +16,7 @@ public class UserDto {
 	private String email;
 	private String password;
 	private String confirmPassword;
-	private Date dateOfBirth;
+	private String dateOfBirth;
 	private String address;
 	private String education;
 	private String maritalStatus;

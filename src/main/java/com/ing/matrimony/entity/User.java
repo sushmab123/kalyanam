@@ -1,8 +1,11 @@
 package com.ing.matrimony.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -15,6 +18,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table
 public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long userId;
 	private String firstName;
 	private String lastName;
@@ -22,7 +27,7 @@ public class User {
 	private int age;
 	private String email;
 	private String password;
-	private Date dateOfBirth;
+	private LocalDate dateOfBirth;
 	private String address;
 	private String education;
 	private String maritalStatus;
