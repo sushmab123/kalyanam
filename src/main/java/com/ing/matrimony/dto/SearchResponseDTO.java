@@ -1,6 +1,5 @@
 package com.ing.matrimony.dto;
 
-import java.util.Date;
 import java.util.List;
 
 import com.ing.matrimony.entity.User;

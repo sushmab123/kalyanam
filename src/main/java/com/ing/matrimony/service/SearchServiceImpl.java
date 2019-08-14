@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ing.matrimony.entity.User;
-import com.ing.matrimony.exception.ValidAgeValidator;
 import com.ing.matrimony.repository.ProfileRepository;
 
 @Service

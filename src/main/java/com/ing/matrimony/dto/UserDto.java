@@ -1,39 +1,26 @@
-package com.ing.matrimony.entity;
-
-import java.time.LocalDate;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+package com.ing.matrimony.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
-@Table
-public class User {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long userId;
+public class UserDto {
+
 	private String firstName;
 	private String lastName;
 	private String mobileNo;
 	private int age;
 	private String email;
 	private String password;
-
-	private LocalDate dateOfBirth;
+	private String confirmPassword;
+	private String dateOfBirth;
 	private String address;
 
 	private String maritalStatus;
 	private String gender;
 	private String motherTongue;
 	private String membershipType;
-
 }
