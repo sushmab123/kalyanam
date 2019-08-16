@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +14,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ing.matrimony.dto.ActionResponseDto;
+import com.ing.matrimony.dto.ActionrequestDto;
 import com.ing.matrimony.dto.InvitationDto;
 import com.ing.matrimony.dto.InvitationRequestDto;
 import com.ing.matrimony.dto.ViewInvitationDto;
@@ -100,6 +103,26 @@ public class InvitationServiceImplTest {
 
 		
 		
+	}
+	
+	
+	@Test
+	public void actionTest()
+	{
+		Invitation invitation = new Invitation();
+
+		invitation.setReceiverId(1L);
+		invitation.setSenderId(2L);
+		invitation.setInvitationStatus("PENDING");
+		Optional<Invitation> optionalInvitation=Optional.of(invitation);
+		
+		ActionrequestDto actionrequestDto=new ActionrequestDto();
+		actionrequestDto.setInvitationId(1L);
+		actionrequestDto.setStatus("ACCEPTED");
+	    when(invitationRepository.findById(Mockito.anyLong())).thenReturn(optionalInvitation);
+	    
+	    ActionResponseDto actionResponseDto=  invitationServiceImpl.action(actionrequestDto);
+	    assertEquals("Your status updated successFully", actionResponseDto.getMessage());
 	}
 	
 }
