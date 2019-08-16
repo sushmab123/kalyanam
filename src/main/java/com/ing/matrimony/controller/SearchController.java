@@ -37,7 +37,7 @@ public class SearchController {
 		SearchResponseDTO searchResponseDTO=new SearchResponseDTO();
 		LOGGER.info("In SearchController search()");
 		List<User> searchList=searchService.search(fromAge, toAge, gender);
-		if(searchList.size()>0)
+		if(!(searchList.isEmpty()))
 		{
 		searchResponseDTO.setStatusCode(200);
 		searchResponseDTO.setUser(searchList);

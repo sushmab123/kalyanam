@@ -24,9 +24,8 @@ public class SearchServiceImpl implements SearchService {
 		
 		LOGGER.info("In SearchServiceImpl");
 
-		List<User> searchProfiles=profileRepository.findByAgeRangeAndGender(fromAge, toAge, gender);
 		
-		return searchProfiles;
+		return profileRepository.findByAgeRangeAndGender(fromAge, toAge, gender);
 	}
 
 }

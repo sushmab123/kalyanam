@@ -48,7 +48,7 @@ public class InvitationServiceImpl implements InvitationService {
 	@Override
 	public List<ViewInvitationDto> viewSentInterest(Long senderId) {
 		List<Invitation> invitationSent= invitationRepository.findBySenderId(senderId);
-		List<ViewInvitationDto> listViewInvitationDto = new ArrayList<ViewInvitationDto>(); 
+		List<ViewInvitationDto> listViewInvitationDto = new ArrayList<>(); 
 		ViewInvitationDto viewInvitationDto = new ViewInvitationDto();
 		for (Invitation viewInvitationDto2 : invitationSent) {
 			viewInvitationDto.setSenderId(viewInvitationDto2.getSenderId());
@@ -63,7 +63,7 @@ public class InvitationServiceImpl implements InvitationService {
 	public List<ViewInvitationDto> viewReceivedInterest(Long receiverId) {
 		
 		List<Invitation> invitationSent= invitationRepository.findByReceiverId(receiverId);
-		List<ViewInvitationDto> listViewInvitationDto = new ArrayList<ViewInvitationDto>(); 
+		List<ViewInvitationDto> listViewInvitationDto = new ArrayList<>(); 
 		ViewInvitationDto viewInvitationDto = new ViewInvitationDto();
 		for (Invitation viewInvitationDto2 : invitationSent) {
 			viewInvitationDto.setSenderId(viewInvitationDto2.getSenderId());
@@ -77,18 +77,18 @@ public class InvitationServiceImpl implements InvitationService {
 	@Override
 	public ActionResponseDto action(ActionrequestDto actionrequestDto) {
 		Optional<Invitation> invitation = invitationRepository.findById(actionrequestDto.getInvitationId());
-		Invitation InvitationStore=new Invitation();
+		Invitation invitationStore=new Invitation();
 		
-		ActionResponseDto  ActionResponseDto=new ActionResponseDto();
+		ActionResponseDto  actionResponseDto=new ActionResponseDto();
 		
 		if(invitation.isPresent())
 		{
-			InvitationStore=invitation.get();
-			InvitationStore.setInvitationStatus(actionrequestDto.getStatus());
-			invitationRepository.save(InvitationStore);
-			ActionResponseDto.setMessage("Your status updated successFully");
+			invitationStore=invitation.get();
+			invitationStore.setInvitationStatus(actionrequestDto.getStatus());
+			invitationRepository.save(invitationStore);
+			actionResponseDto.setMessage("Your status updated successFully");
 		}
-		return ActionResponseDto;
+		return actionResponseDto;
 		
 	}
 
