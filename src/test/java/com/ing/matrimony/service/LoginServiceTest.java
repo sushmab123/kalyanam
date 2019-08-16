@@ -21,7 +21,7 @@ import com.ing.matrimony.repository.UserRepository;
 public class LoginServiceTest {
 
 	@InjectMocks
-	LoginServiceImpl LoginServiceImpl;
+	LoginServiceImpl loginServiceImpl;
 
 	@Mock
 	UserRepository userRepository ;
@@ -57,9 +57,9 @@ public class LoginServiceTest {
 	@Test
 	public void login() {
 
-		Mockito.when(userRepository.findByMobileNoAndPassword(loginDto.getMobileNo(), loginDto.getPassword()))
+		Mockito.when(userRepository.findByMobileNoAndPassword(Mockito.anyString(), Mockito.anyString()))
 				.thenReturn(user);
-		LoginResponseDto loginResponseDto = LoginServiceImpl.login(loginDto);
+		LoginResponseDto loginResponseDto = loginServiceImpl.login(loginDto);
 		Assert.assertEquals(loginResponseDto.getUserId(),user.getUserId());
 
 	}

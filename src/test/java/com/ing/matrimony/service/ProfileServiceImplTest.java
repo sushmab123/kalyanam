@@ -28,9 +28,9 @@ public class ProfileServiceImplTest {
 	public void testFindUserById() {
 		User user = new User();
 		user.setFirstName("Chandu");
-		user.setUserId(1l);
-		when(userRepository.findByUserId(user.getUserId())).thenReturn(user);
-		ProfileResponseDto profileResponseDto = profileServiceImpl.showProfile(1l);
+		user.setUserId(1L);
+		when(userRepository.findByUserId(1L)).thenReturn(user);
+		ProfileResponseDto profileResponseDto = profileServiceImpl.showProfile(1L);
 		Assert.assertEquals(user.getFirstName(), profileResponseDto.getFirstName());
 	}
 }
