@@ -77,12 +77,13 @@ public class InvitationServiceImpl implements InvitationService {
 	@Override
 	public ActionResponseDto action(ActionrequestDto actionrequestDto) {
 		Optional<Invitation> invitation = invitationRepository.findById(actionrequestDto.getInvitationId());
+	
 		Invitation invitationStore=new Invitation();
-		
 		ActionResponseDto  actionResponseDto=new ActionResponseDto();
 		
 		if(invitation.isPresent())
 		{
+			
 			invitationStore=invitation.get();
 			invitationStore.setInvitationStatus(actionrequestDto.getStatus());
 			invitationRepository.save(invitationStore);

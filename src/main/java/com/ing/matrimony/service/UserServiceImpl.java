@@ -49,7 +49,6 @@ public class UserServiceImpl implements UserService {
 				int count = 0;
 
 				for (User users : listUser) {
-					System.out.println("DATA" + users.getMobileNo());
 					if ((users.getMobileNo().equals(userDto.getMobileNo()))) {
 						count = count + 1;
 					}
