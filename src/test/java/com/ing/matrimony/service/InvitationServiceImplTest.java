@@ -117,12 +117,14 @@ public class InvitationServiceImplTest {
 		Optional<Invitation> optionalInvitation=Optional.of(invitation);
 		
 		ActionrequestDto actionrequestDto=new ActionrequestDto();
-		actionrequestDto.setInvitationId(1L);
+		actionrequestDto.setRecieverId(2L);
+		actionrequestDto.setSenderId(1L);
 		actionrequestDto.setStatus("ACCEPTED");
 	    when(invitationRepository.findById(Mockito.anyLong())).thenReturn(optionalInvitation);
 	    
 	    ActionResponseDto actionResponseDto=  invitationServiceImpl.action(actionrequestDto);
-	    assertEquals("Your status updated successFully", actionResponseDto.getMessage());
+	   System.out.println(actionResponseDto.getMessage());
+	    assertEquals(200, actionResponseDto.getStatusCode());
 	}
 	
 }

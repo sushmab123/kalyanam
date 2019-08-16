@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ActionrequestDto {
-	private Long invitationId;
+	private Long recieverId;
+	private Long senderId;
 	private String status;
 }

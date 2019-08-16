@@ -103,7 +103,9 @@ public class InterestControllerTest {
 	public void action() {
 
 		ActionrequestDto actionRequestDto = new ActionrequestDto();
-		actionRequestDto.setInvitationId(1L);
+		actionRequestDto.setRecieverId(2L);
+		actionRequestDto.setSenderId(1L);
+		actionRequestDto.setStatus("ACCEPTED");
 
 		ActionResponseDto actionResponseDto = new ActionResponseDto();
 		actionResponseDto.setMessage("Ac");

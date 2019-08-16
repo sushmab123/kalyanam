@@ -1,13 +1,18 @@
 package com.ing.matrimony.controller;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -21,31 +26,27 @@ import com.ing.matrimony.service.LoginService;
 
 
 
-@RunWith(SpringRunner.class)
-@WebMvcTest(value = LoginController.class)
-
+@RunWith(SpringJUnit4ClassRunner.class)
 public class LoginControllerTest {
 
 	
-	@Autowired
-    MockMvc mockMvc;
+	private MockMvc mockMvc;
 	
 	@MockBean
 	LoginService loginService;
 
+	@InjectMocks
+	LoginController loginController;
+	
 	User user;
 	LoginDto loginDto;
 	LoginResponseDto loginResponseDto;
 
 	@Before
-	public void init() {
+	public void setUp() {
 
-		user = new User();
-
-		loginResponseDto = new LoginResponseDto();
-		 loginDto=new LoginDto();
-
-		mockMvc = MockMvcBuilders.standaloneSetup(loginService).build();
+	
+		mockMvc = MockMvcBuilders.standaloneSetup(loginController).build();
 
 	}
 
@@ -58,12 +59,20 @@ public class LoginControllerTest {
 	}
 	
 	@Test
- 	public void login() throws Exception {
+ 	public void loginTest() throws Exception {
+		
+		LoginDto loginDto=new LoginDto();
+		loginDto.setMobileNo("8970297757");
+		loginDto.setPassword("ok");
 		Mockito.when(loginService.login(loginDto)).thenReturn(loginResponseDto);
 		
-		mockMvc.perform(MockMvcRequestBuilders.put("/matrimony/api/login").contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.ALL).content(asJsonString(loginResponseDto))).andReturn();
-
+		mockMvc.perform(MockMvcRequestBuilders.put("/login").contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.ALL).content(asJsonString(loginDto))).andReturn();
+		
+		
+		
+		ResponseEntity<LoginResponseDto> loginResponseDto=loginController.login(loginDto);
+		assertEquals("Logged in Successfully", loginResponseDto.getBody().getMessage());
 	}
 
 }

@@ -2,7 +2,6 @@ package com.ing.matrimony.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +36,7 @@ public class InvitationServiceImpl implements InvitationService {
 		invitation.setSenderId(invitationDto.getSenderId());
 		invitation.setReceiverId(invitationDto.getRecieverId());
 		invitation.setInvitationStatus("PENDING");
-		invitationResDto.setMessage("invitation send");
+		invitationResDto.setMessage("Invitation send");
 		invitationResDto.setStatusCode(200);
 		
 		invitationRepository.save(invitation);
@@ -76,20 +75,24 @@ public class InvitationServiceImpl implements InvitationService {
 
 	@Override
 	public ActionResponseDto action(ActionrequestDto actionrequestDto) {
-		Optional<Invitation> invitation = invitationRepository.findById(actionrequestDto.getInvitationId());
-	
-		Invitation invitationStore=new Invitation();
-		ActionResponseDto  actionResponseDto=new ActionResponseDto();
-		
-		if(invitation.isPresent())
+	List<Invitation> invitationRecieved =  invitationRepository.findBySenderId(actionrequestDto.getSenderId());
+	System.out.println(actionrequestDto.getSenderId());
+	System.out.println(invitationRecieved.size());
+	ActionResponseDto actionResponseDto=new ActionResponseDto();
+	for (Invitation invitatioCheck : invitationRecieved) {
+		System.out.println(invitatioCheck.getReceiverId().equals(actionrequestDto.getRecieverId()));
+		if(invitatioCheck.getReceiverId().equals(actionrequestDto.getRecieverId()))
 		{
-			
-			invitationStore=invitation.get();
-			invitationStore.setInvitationStatus(actionrequestDto.getStatus());
-			invitationRepository.save(invitationStore);
-			actionResponseDto.setMessage("Your status updated successFully");
+			invitatioCheck.setInvitationStatus(actionrequestDto.getStatus());
+			invitationRepository.save(invitatioCheck);
+			actionResponseDto.setMessage("Status Updated");
+			actionResponseDto.setStatusCode(200);
 		}
-		return actionResponseDto;
+		
+	}
+	return actionResponseDto;
+	
+		
 		
 	}
 
