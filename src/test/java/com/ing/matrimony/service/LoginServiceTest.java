@@ -33,7 +33,7 @@ public class LoginServiceTest {
 	@Before
 	public void init() {
 
-		User user= new User();
+		user= new User();
 		user.setUserId(1L);
 		user.setFirstName("chandu");
 		user.setLastName("raju");
