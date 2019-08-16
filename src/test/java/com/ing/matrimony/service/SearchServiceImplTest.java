@@ -29,7 +29,7 @@ public class SearchServiceImplTest {
 	
 	
 	@Test
-	public void searchTest() {
+	public void searchTest() throws Exception {
 		
 		List<User> userList=new ArrayList<>();
 		User user=new User();
